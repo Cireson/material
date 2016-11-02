@@ -340,10 +340,9 @@ function SelectDirective($mdSelect, $mdUtil, $mdConstant, $mdTheming, $mdAria, $
         if (attr.mdSelectedText) {
           text = $parse(attr.mdSelectedText)(scope);
         } else {
-          // Use placeholder attribute, otherwise fallback to the md-input-container label
-          var tmpPlaceholder = attr.placeholder ||
-              (containerCtrl && containerCtrl.label ? containerCtrl.label.text() : '');
-          text = text || tmpPlaceholder || '';
+            // Use placeholder attribute
+            var tmpPlaceholder = attr.placeholder;
+            text = text || tmpPlaceholder || '';
         }
 
         var target = valueEl.children().eq(0);

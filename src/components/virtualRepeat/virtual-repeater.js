@@ -115,6 +115,16 @@ function VirtualRepeatContainerController($$rAF, $mdUtil, $mdConstant, $parse, $
   this.autoShrink = this.$attrs.hasOwnProperty('mdAutoShrink');
   /** @type {number} Minimum number of items to auto-shrink to */
   this.autoShrinkMin = parseInt(this.$attrs.mdAutoShrinkMin, 10) || 0;
+
+  /** @type {number} Pad auto-shrink-min */
+  var parsedValue;
+  try {
+      parsedValue = $parse(this.$attrs.mdAutoShrinkPad)($scope);
+  } catch (e) {
+      parsedValue = 0;
+  }
+  this.autoShrinkPad = parsedValue;
+
   /** @type {?number} Original container size when shrank */
   this.originalSize = null;
   /** @type {number} Amount to offset the total scroll size by. */
@@ -291,8 +301,11 @@ VirtualRepeatContainerController.prototype.sizeScroller_ = function(size) {
  * @param {number} size The new size.
  */
 VirtualRepeatContainerController.prototype.autoShrink_ = function(size) {
-  var shrinkSize = Math.max(size, this.autoShrinkMin * this.repeater.getItemSize());
+    if (this.autoShrinkPad > 0) {
+        size += this.repeater.getItemSize() * this.autoShrinkPad;
+    }
 
+    var shrinkSize = Math.max(size, this.autoShrinkMin * this.repeater.getItemSize() * (this.autoShrinkPad > 0 ? this.autoShrinkPad : 1));
   if (this.autoShrink && shrinkSize !== this.size) {
     if (this.oldElementSize === null) {
       this.oldElementSize = this.$element[0].style[this.getDimensionName_()];
