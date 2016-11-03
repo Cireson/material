@@ -1,0 +1,18 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\dist",
+    "\\gulp",
+    "\\gulp\\tasks",
+    "\\src",
+    "\\src\\components",
+    "\\src\\components\\autocomplete",
+    "\\src\\components\\autocomplete\\js",
+    "\\src\\components\\datepicker",
+    "\\src\\components\\select",
+    "\\src\\components\\virtualRepeat",
+    "\\src\\core",
+    "\\src\\core\\util"
+  ],
+  "SelectedNode": "\\dist\\angular-material.js"
+}
