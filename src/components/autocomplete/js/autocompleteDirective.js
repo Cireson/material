@@ -210,6 +210,8 @@ function MdAutocomplete () {
                   ' + itemTemplate + '\
                   </li>\
             </ul>\
+          </md-virtual-repeat-container>\
+        </md-autocomplete-wrap>\
         <aria-status\
             class="md-visually-hidden"\
             role="status"\
