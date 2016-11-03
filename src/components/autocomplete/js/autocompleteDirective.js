@@ -183,6 +183,7 @@ function MdAutocomplete () {
             ng-class="{ \'md-whiteframe-z1\': !floatingLabel, \'md-menu-showing\': !$mdAutocompleteCtrl.hidden }"\
             role="listbox">\
           ' + getInputElement() + '\
+          <i class="material-icons autocomplete-dropdown" ng-if="$mdAutocompleteCtrl.showArrow" ng-click="$mdAutocompleteCtrl.fetchAllResults()">arrow_drop_down</i>\
           <md-progress-linear\
               class="' + (attr.mdFloatingLabel ? 'md-inline' : '') + '"\
               ng-if="$mdAutocompleteCtrl.loadingIsVisible()"\
@@ -190,25 +191,25 @@ function MdAutocomplete () {
           <md-virtual-repeat-container\
               md-auto-shrink\
               md-auto-shrink-min="1"\
+              md-auto-shrink-pad="$mdAutocompleteCtrl.alwaysShowNotFound ? 1 : 0"\
               ng-mouseenter="$mdAutocompleteCtrl.listEnter()"\
               ng-mouseleave="$mdAutocompleteCtrl.listLeave()"\
               ng-mouseup="$mdAutocompleteCtrl.mouseUp()"\
               ng-hide="$mdAutocompleteCtrl.hidden"\
               class="md-autocomplete-suggestions-container md-whiteframe-z1"\
-              ng-class="{ \'md-not-found\': $mdAutocompleteCtrl.notFoundVisible() }"\
+              ng-class="{ \'md-not-found\': $mdAutocompleteCtrl.notFoundVisible() && $mdAutocompleteCtrl.matches < 1 }"\
               role="presentation">\
             <ul class="md-autocomplete-suggestions"\
                 ng-class="::menuClass"\
                 id="ul-{{$mdAutocompleteCtrl.id}}">\
-              <li md-virtual-repeat="item in $mdAutocompleteCtrl.matches"\
-                  ng-class="{ selected: $index === $mdAutocompleteCtrl.index }"\
-                  ng-click="$mdAutocompleteCtrl.select($index)"\
+              ' + noItemsTemplate + '\
+              <li md-virtual-repeat="item in $mdAutocompleteCtrl.matches | orderBy : $mdAutocompleteCtrl.orderBy : $mdAutocompleteCtrl.orderByDescending"\
+                  ng-class="{ selected: $index === $mdAutocompleteCtrl.index, match: $mdAutocompleteCtrl.scope.searchText === $mdAutocompleteCtrl.getItemText(item) }"\
+                  ng-click="$mdAutocompleteCtrl.select(item)"\
                   md-extra-name="$mdAutocompleteCtrl.itemName">\
                   ' + itemTemplate + '\
-                  </li>' + noItemsTemplate + '\
+                  </li>\
             </ul>\
-          </md-virtual-repeat-container>\
-        </md-autocomplete-wrap>\
         <aria-status\
             class="md-visually-hidden"\
             role="status"\
