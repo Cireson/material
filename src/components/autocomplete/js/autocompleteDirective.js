@@ -183,7 +183,7 @@ function MdAutocomplete () {
             ng-class="{ \'md-whiteframe-z1\': !floatingLabel, \'md-menu-showing\': !$mdAutocompleteCtrl.hidden }"\
             role="listbox">\
           ' + getInputElement() + '\
-          <md-icon class="fa fa-caret-down autocomplete-dropdown" ng-if="$mdAutocompleteCtrl.showArrow" ng-click="$mdAutocompleteCtrl.fetchAllResults()"></md-icon>\
+          <i class="material-icons autocomplete-dropdown" ng-if="$mdAutocompleteCtrl.showArrow" ng-click="$mdAutocompleteCtrl.fetchAllResults()">arrow_drop_down</i>\
           <md-progress-linear\
               class="' + (attr.mdFloatingLabel ? 'md-inline' : '') + '"\
               ng-if="$mdAutocompleteCtrl.loadingIsVisible()"\
