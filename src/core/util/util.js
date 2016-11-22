@@ -260,7 +260,7 @@ function UtilFactory($document, $timeout, $compile, $rootScope, $$mdAnimate, $in
         scrollMask.on('wheel', preventDefault);
         scrollMask.on('touchmove', preventDefault);
         scrollMask.on('click', function () {
-            $mdUtil.disableScrollAround._enableScrolling();
+            $mdUtil.enableScrolling();
             $rootScope.$broadcast('hideAutoCompleteList');
         });
 
