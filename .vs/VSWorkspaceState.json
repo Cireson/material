@@ -1,8 +1,8 @@
 {
   "ExpandedNodes": [
     "",
+    "\\gulp",
     "\\gulp\\tasks",
-    "\\src",
     "\\src\\components",
     "\\src\\components\\autocomplete",
     "\\src\\components\\autocomplete\\js",
@@ -11,5 +11,5 @@
     "\\src\\core",
     "\\src\\core\\util"
   ],
-  "SelectedNode": "\\src\\components\\datepicker\\datePicker.js"
+  "SelectedNode": "\\release.js"
 }
