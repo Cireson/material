@@ -25654,7 +25654,7 @@ function MdAutocomplete($$mdSvgRegistry) {
             dropdownPosition: '@?mdDropdownPosition',
             clearButton: '=?mdClearButton',
             showNotFound: '=?mdShowNotFound',
-            orderBy: '=?mdOrderBy',
+            orderBy: '&?mdOrderBy',
             orderByDescending: '=?mdOrderByDescending',
             alwaysShowNotFound: '=?mdAlwaysShowNotFound',
             showArrow: '=?mdShowArrow',
@@ -25704,7 +25704,7 @@ function MdAutocomplete($$mdSvgRegistry) {
                         \'md-show-clear-button\': !!clearButton }">\
           ' + getInputElement() + '\
           ' + getClearButton() + '\
-          <i class="material-icons autocomplete-dropdown" ng-if="$mdAutocompleteCtrl.showArrow" ng-click="$mdAutocompleteCtrl.fetchAllResults()">arrow_drop_down</i>\
+          <i class="material-icons autocomplete-dropdown" ng-if="$mdAutocompleteCtrl.showArrow" ng-click="$mdAutocompleteCtrl.fetchAllResults()">&#xE5C5;</i>\
           <md-progress-linear\
               class="' + (attr.mdFloatingLabel ? 'md-inline' : '') + '"\
               ng-if="$mdAutocompleteCtrl.loadingIsVisible()"\
@@ -25724,7 +25724,7 @@ function MdAutocomplete($$mdSvgRegistry) {
                 ng-class="::menuClass"\
                 id="ul-{{$mdAutocompleteCtrl.id}}">\
               ' + noItemsTemplate + '\
-              <li md-virtual-repeat="item in $mdAutocompleteCtrl.matches | orderBy : $mdAutocompleteCtrl.orderBy : $mdAutocompleteCtrl.orderByDescending"\
+              <li md-virtual-repeat="item in $mdAutocompleteCtrl.matches | orderBy : $mdAutocompleteCtrl.orderBy() : $mdAutocompleteCtrl.orderByDescending"\
                   ng-class="{ selected: $index === $mdAutocompleteCtrl.index, match: $mdAutocompleteCtrl.scope.searchText === $mdAutocompleteCtrl.getItemText(item) }"\
                   ng-click="$mdAutocompleteCtrl.select(item)"\
                   md-extra-name="$mdAutocompleteCtrl.itemName">\
